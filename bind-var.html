@@ -1,0 +1,32 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="bind-var">
+  <template>
+    <content></content>
+  </template>
+  <script>
+   (function() {
+       class BindVar {
+           beforeRegister() {
+               this.is = 'bind-var'
+               this.properties = {
+                   in: {
+                       type: Object,
+                       observer: "_set"
+                   },
+                   out: {
+                       type: Object,
+                       notify: true
+                   }
+               }
+           }
+           _set(val) {
+               this.set('out', val)
+           }
+       }
+       Polymer(BindVar)
+   })();
+   
+  </script>
+</dom-module>
+
